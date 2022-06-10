@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/css/ol.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="mainES6.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+   
+  </head>
+  <body>
+    <nav class="flex justify-between space-x-2 my-3 mx-3">
+      <div class="flex justify-start">
+        <img
+          class="h-10 w-10 self-center"
+          src="http://localhost/store-locator/img/logo.png"
+        />
+        <a
+          href="/index.html"
+          class="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900 text-lg"
+          >Xigen Store Locator</a
+        >
+      </div>
+      <a
+        href="/index.html"
+        class="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900"
+        >Home</a
+      >
+    </nav>
+    <div class="flex bg-gray-400">
+      <article class="flex justify-center h-[46rem] w-1/2 bg-gray-400">
+        <div class="max-w-xl p-10 top-28 text-center">
+          <div class="p-6 bg-white">
+            <h3 class="text-xl tracking-tight font-extrabold text-gray-900 sm:text-xl md:text-xl mb-2">
+              <span class="block xl:inline">Xigen Store Locator</span>
+              <span class="block text-indigo-600 xl:inline">Locate xigen branches</span>
+            </h1>
+            <form action="/" method="get">
+              <div>
+                <div>
+                  <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="search"
+                    id="site-search"
+                    name="search"
+                    aria-label="Search through site content"
+                    placeholder="Search"
+                  />
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2"
+                    onclick="locationFind()"
+                    id="search_button"
+                  >Search using my current location
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="flex flex-col mt-3">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                  <table class="min-w-full">
+                    <thead class="bg-white border-b">
+                      <tr>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Name
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Address
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Description
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id = "template"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <div id="map" class="map"></div>
+    </div>
+    <footer class="bg-black text-white p-12">
+      <div>
+        <p>Xigen Store locator</p>
+      </div>
+    </footer>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVQyYucTAy82yoTKlP_ClgGGPrbt9YH_U&callback=initMap&v=weekly"
+      async
+    ></script>
+  </body>
+</html>
